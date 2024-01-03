@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blowing up a balloon</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+
+  <body>
+    <h1>Blowing up a balloon</h1>
+    <p class="baloon">🎈</p>
+
+    <script>
+      
+      let baloon = document.querySelector(".baloon"); 
+      // let size;
+
+      function setSize(newSize){
+        size = newSize;
+        baloon.style.fontSize = size + "px";
+        if(size<20){
+          size = 20
+        }
+      }
+      setSize(20)
+
+      function  handleArrow(event){
+        if (event.key == "ArrowUp"){
+          if (size > 100 ) {
+            baloon.textContent = "💥";
+            document.body.removeEventListener("keydown", handleArrow);
+            setTimeout(()=>{
+              baloon.textContent = " "
+            },2000)
+          } else {
+            setSize(size + 10);
+          }
+        } else if (event.key == "ArrowDown"){
+          setSize(size - 10);
+        }
+      }
+      document.body.addEventListener("keydown", handleArrow);
+      
+
+      
+      
+
+    </script>
+  </body>
+</html>
